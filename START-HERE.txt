@@ -1,0 +1,11 @@
+ARVENE website
+==============
+1. Unzip this folder completely (don't open files from inside the zip viewer).
+2. Double-click index.html to open the site in your browser.
+
+Where the photos are (inside the "images" folder, in four sub-folders):
+  images/campaign/      1 hero photo
+  images/editorial/     1 editorial photo
+  images/collections/   5 collection photos
+  images/products/      11 product photos
+Keep the "images" folder next to index.html, or the photos won't appear.

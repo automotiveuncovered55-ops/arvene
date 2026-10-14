@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ARVENE — Cut for the long term</title>
+<meta name="description" content="ARVENE is a fictional independent label of architectural tailoring and quiet essentials. Portfolio concept.">
+<meta property="og:title" content="ARVENE — Cut for the long term"><meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Hanken+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ECE8DA;--surf:#F5F2E8;--ink:#24261C;--mute:#646450;--line:#D2CCB6;--stone:#D6D0BA;--taupe:#8E8C6E;--ok:#3d5a45;--err:#8a3a2e;
+--serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;--sans:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;--ease:cubic-bezier(.2,.7,.2,1);--w:1360px;--g:clamp(16px,3vw,40px);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#171812;--surf:#1F2018;--ink:#ECE8DA;--mute:#A3A28B;--line:#38392D;--stone:#2A2B20;--taupe:#8E8C6E}}
+:root[data-theme="dark"]{--bg:#171812;--surf:#1F2018;--ink:#ECE8DA;--mute:#A3A28B;--line:#38392D;--stone:#2A2B20;--taupe:#8E8C6E}
+html{height:100%;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font:400 15px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+img{display:block;max-width:100%}
+.wrap{max-width:var(--w);margin:0 auto;padding:0 var(--g)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;line-height:1.02;letter-spacing:-.01em}
+.h-hero{font-size:clamp(3rem,9vw,8.2rem)}.h-sec{font-size:clamp(2rem,4.4vw,3.6rem)}
+.cap{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 30px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:var(--bg);border:1px solid var(--ink);transition:background .3s var(--ease),color .3s var(--ease)}
+.btn:hover{background:transparent;color:var(--ink)}.btn:disabled{opacity:.4;cursor:not-allowed}.btn:disabled:hover{background:var(--ink);color:var(--bg)}
+.btn.ghost{background:transparent;color:var(--ink)}.btn.ghost:hover{background:var(--ink);color:var(--bg)}
+.ul{border-bottom:1px solid currentColor;padding-bottom:2px;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.ann{background:var(--ink);color:var(--bg);text-align:center;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:9px 12px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--bg);border-bottom:1px solid var(--line)}
+.hd{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:68px}
+.logo{font-family:var(--serif);font-size:30px;letter-spacing:.34em;padding-left:.34em}
+nav.main{display:flex;gap:28px;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+nav.main a{padding:8px 0;border-bottom:1px solid transparent}nav.main a:hover{border-color:var(--ink)}
+.tools{display:flex;gap:6px;justify-content:flex-end;align-items:center;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.tools button{min-height:44px;min-width:44px;padding:0 8px}
+.burger{display:none}
+@media(max-width:860px){nav.main{display:none}.burger{display:inline-flex;align-items:center}.logo{font-size:24px}.hd{height:60px}}
+.mnav{position:fixed;inset:0;z-index:60;background:var(--bg);padding:calc(env(safe-area-inset-top,0px) + 20px) var(--g) 30px;display:flex;flex-direction:column;transform:translateX(-100%);transition:transform .45s var(--ease);visibility:hidden}
+.mnav.open{transform:none;visibility:visible}
+.mnav a{font-family:var(--serif);font-size:2.6rem;padding:8px 0;border-bottom:1px solid var(--line)}
+.mnav .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.scrim{position:fixed;inset:0;background:rgba(23,23,21,.4);z-index:70;opacity:0;visibility:hidden;transition:opacity .35s}
+.scrim.open{opacity:1;visibility:visible}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);z-index:80;background:var(--bg);display:flex;flex-direction:column;transform:translateX(100%);transition:transform .45s var(--ease);visibility:hidden;padding-top:env(safe-area-inset-top,0px)}
+.drawer.open{transform:none;visibility:visible}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid var(--line)}
+.db{flex:1;overflow:auto;padding:8px 24px}.df{padding:20px 24px calc(20px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
+.line{display:grid;grid-template-columns:84px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.line img{aspect-ratio:4/5;object-fit:cover;width:84px;background:var(--stone)}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line)}.qty button{width:44px;height:44px}.qty span{min-width:28px;text-align:center}
+.row{display:flex;justify-content:space-between;gap:12px}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;min-height:calc(100vh - 120px);min-height:calc(100svh - 120px);border-bottom:1px solid var(--line)}
+.hero .t{display:flex;flex-direction:column;justify-content:flex-end;padding:var(--g);gap:22px}
+.hero .t p{max-width:36ch;margin:0;color:var(--mute);font-size:16px}
+.hero .v{background:var(--stone);position:relative;overflow:hidden}.hero .v img{width:100%;height:100%;object-fit:cover}
+.hero .v .cap{position:absolute;left:20px;bottom:16px}
+@media(max-width:860px){.hero{grid-template-columns:1fr;min-height:0}.hero .v{order:-1;height:62vw;min-height:300px}.hero .t{padding:28px var(--g) 44px}}
+section.s{padding:clamp(56px,9vw,128px) 0}
+.shd{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:clamp(28px,4vw,56px)}
+.shd p{max-width:44ch;margin:14px 0 0;color:var(--mute)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px var(--g)}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:720px){.grid{grid-template-columns:repeat(2,1fr);gap:28px 14px}}
+.card .im{position:relative;aspect-ratio:4/5;background:var(--stone);overflow:hidden}
+.card img{width:100%;height:100%;object-fit:cover;transition:opacity .5s var(--ease),transform 1.2s var(--ease)}
+.card img+img{position:absolute;inset:0;opacity:0}.card:hover img+img,.card:focus-within img+img{opacity:1}.card:hover img{transform:scale(1.03)}
+.card .qa{position:absolute;left:0;right:0;bottom:0;padding:12px;opacity:0;transform:translateY(8px);transition:.35s var(--ease)}
+.card:hover .qa,.card:focus-within .qa{opacity:1;transform:none}
+@media(hover:none){.card .qa{display:none}}
+.card .qa a{display:block;background:var(--bg);text-align:center;font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:12px}
+.card .m{padding-top:12px;display:flex;justify-content:space-between;gap:10px;font-size:14px}
+.card .sub{font-size:12px;color:var(--mute)}
+.tag{position:absolute;top:12px;left:12px;z-index:2;font-size:10px;letter-spacing:.16em;text-transform:uppercase;background:var(--bg);padding:4px 8px}
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:70vh;background:var(--ink);color:var(--bg)}
+.split .v{background:var(--taupe)}.split .v img{width:100%;height:100%;object-fit:cover}
+.split .t{padding:clamp(28px,6vw,96px);display:flex;flex-direction:column;justify-content:center;gap:24px}.split .t p{color:#cdc9b3;max-width:42ch;margin:0}
+.split .btn{background:var(--bg);color:var(--ink);border-color:var(--bg);align-self:flex-start}.split .btn:hover{background:transparent;color:var(--bg)}
+@media(max-width:860px){.split{grid-template-columns:1fr}.split .v{height:90vw;max-height:520px}}
+.cats{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--g)}
+@media(max-width:860px){.cats{grid-template-columns:repeat(2,1fr)}.cats a:first-child{grid-column:1/-1}}
+.cats a .im{aspect-ratio:3/4;background:var(--stone);overflow:hidden}.cats a:first-child .im{aspect-ratio:1/1}
+@media(min-width:861px){.cats a:first-child .im{aspect-ratio:3/4}}
+.cats img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}.cats a:hover img{transform:scale(1.04)}
+.cats span{display:block;padding-top:10px;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.phil{text-align:center;max-width:20ch;margin:0 auto}.phil.h-sec{font-size:clamp(2.2rem,5.6vw,4.8rem);max-width:18ch}
+.nl{border-top:1px solid var(--line)}.nl form{display:flex;gap:0;max-width:520px;margin-top:24px}
+.nl input,.f input,.f select{width:100%;min-height:48px;padding:0 14px;background:transparent;border:1px solid var(--ink);color:var(--ink);font:inherit;border-radius:0}
+.nl .btn{white-space:nowrap}.msg{min-height:24px;font-size:13px;margin-top:10px}.msg.ok{color:var(--ok)}.msg.er{color:var(--err)}
+@media(max-width:520px){.nl form{flex-direction:column;gap:10px}}
+footer{background:var(--ink);color:#cdc9b3;padding:72px 0 calc(32px + env(safe-area-inset-bottom,0px));margin-top:0}
+footer .logo{color:var(--bg);padding:0}.fg{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:40px}
+@media(max-width:860px){.fg{grid-template-columns:1fr 1fr}.fg>:first-child{grid-column:1/-1}}
+footer h3{font:500 11px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--bg);margin-bottom:14px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:14px}footer a:hover{color:#fff}
+.fb{border-top:1px solid #373828;margin-top:48px;padding-top:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px}
+.shop{display:grid;grid-template-columns:230px 1fr;gap:var(--g);padding:40px 0 100px}
+@media(max-width:860px){.shop{grid-template-columns:1fr}}
+.fl{display:grid;gap:26px;align-content:start}.fl h3{font:500 11px var(--sans);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:40px;min-width:44px;padding:0 14px;border:1px solid var(--line);font-size:13px;transition:.25s}
+.chip[aria-pressed=true],.chip[aria-checked=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}.chip:disabled{color:var(--taupe);text-decoration:line-through;cursor:not-allowed}
+@media(max-width:860px){.fl{border:1px solid var(--line);padding:18px}details.fw:not([open])>.fl{display:none}}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:24px}
+.bar select{min-height:44px;border:1px solid var(--line);background:transparent;color:var(--ink);padding:0 10px;font:inherit}
+.pdp{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(24px,5vw,80px);padding:32px 0 80px}
+@media(max-width:860px){.pdp{grid-template-columns:1fr}}
+.gal{display:grid;grid-template-columns:72px 1fr;gap:14px}
+.gal .th{display:grid;gap:10px;align-content:start}.gal .th button{aspect-ratio:4/5;border:1px solid transparent;opacity:.6;overflow:hidden}.gal .th button[aria-current=true]{border-color:var(--ink);opacity:1}
+.gal .mn{aspect-ratio:4/5;background:var(--stone);overflow:hidden}.gal .mn img{width:100%;height:100%;object-fit:cover}
+@media(max-width:860px){.gal{grid-template-columns:1fr}.gal .th{grid-auto-flow:column;grid-auto-columns:64px;order:2}}
+.info{align-self:start;position:sticky;top:96px;display:grid;gap:22px}
+@media(max-width:860px){.info{position:static}}
+.sw{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);box-shadow:inset 0 0 0 3px var(--bg)}.sw[aria-checked=true]{outline:1px solid var(--ink);outline-offset:2px}
+details.ac{border-top:1px solid var(--line)}details.ac:last-of-type{border-bottom:1px solid var(--line)}
+details.ac summary{padding:16px 0;cursor:pointer;list-style:none;font-size:12px;letter-spacing:.14em;text-transform:uppercase;display:flex;justify-content:space-between}
+details.ac summary::after{content:"+"}details.ac[open] summary::after{content:"–"}details.ac p{margin:0 0 16px;color:var(--mute)}
+.crumb{font-size:12px;color:var(--mute);padding-top:24px}
+.srch{position:fixed;inset:0;z-index:90;background:var(--bg);padding:calc(env(safe-area-inset-top,0px) + 16px) 0 24px;overflow:auto;display:none}.srch.open{display:block}
+.srch input{width:100%;border:0;border-bottom:1px solid var(--ink);background:transparent;color:var(--ink);font:400 clamp(1.8rem,5vw,3.4rem) var(--serif);padding:14px 0;border-radius:0}
+.sr{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:20px;margin-top:28px}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--ink);color:var(--bg);padding:14px 22px;font-size:13px;z-index:100;opacity:0;pointer-events:none;transition:.4s var(--ease);display:flex;gap:18px;align-items:center;max-width:92vw}
+.toast.show{opacity:1;transform:translate(-50%,0);pointer-events:auto}.toast button{text-decoration:underline;color:inherit;min-height:32px}
+.empty{padding:60px 0;text-align:center;color:var(--mute)}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .9s var(--ease),transform .9s var(--ease)}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+footer{background:#1B1C14;color:#cdc9b3}
+.split{background:#2A2C20;color:#ECE8DA}.split .t p{color:#cdc9b3}
+.split .btn{background:#ECE8DA;color:#24261C;border-color:#ECE8DA}.split .btn:hover{background:transparent;color:#ECE8DA}
+.hero .t{justify-content:space-between}.hero h1{font-size:clamp(3rem,7.6vw,7.4rem);line-height:.94}
+.fw>summary{display:none}
+@media(max-width:860px){.fw>summary{display:inline-flex;align-items:center;margin-bottom:12px;cursor:pointer;list-style:none}.hero .v{height:96vw;max-height:70svh}}
+footer .fine{max-width:38ch;margin:16px 0 0;font-size:14px}
+.ph-img{object-position:var(--fp,50% 30%)}@media(max-width:860px){.ph-img{object-position:var(--fpm,var(--fp,50% 30%))}}
+.hero.fb{display:block;position:relative;min-height:min(92svh,920px);color:#fff}
+.hero.fb .v{position:absolute;inset:0;height:auto;max-height:none}
+.hero.fb .v::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(18,19,12,.5),rgba(18,19,12,0) 55%);pointer-events:none}
+.hero.fb .t{position:relative;z-index:1;min-height:min(92svh,920px);max-width:var(--w);margin:0 auto}
+.hero.fb .t p,.hero.fb .cap{color:rgba(255,255,255,.88)}.hero.fb .v .cap{display:none}.hero.fb .ul{color:#fff}
+.hero.fb .btn{background:#fff;color:#24261C;border-color:#fff}.hero.fb .btn:hover{background:transparent;color:#fff}
+.gal.one{grid-template-columns:1fr}.gal.one .th{display:none}
+.ab-top{padding:clamp(48px,8vw,110px) 0 clamp(32px,5vw,64px);max-width:900px}.ab-h{font-size:clamp(2.6rem,6.4vw,5.6rem);margin:14px 0 24px}.ab-lead{font-size:18px;max-width:52ch;color:var(--mute);margin:0}
+.ab-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,6vw,96px);align-items:center;padding:clamp(40px,6vw,88px) 0}.ab-split.rev .abi{order:2}
+.abi{background:var(--stone);overflow:hidden;aspect-ratio:3/4}.abi.wide{aspect-ratio:16/10}.abi img{width:100%;height:100%;object-fit:cover}
+.ab-t{display:grid;gap:18px;align-content:center}.ab-t p{margin:0;color:var(--mute);max-width:46ch}
+.ab-pr{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--g);border-top:1px solid var(--line);padding:clamp(40px,6vw,80px) 0}.ab-pr b{font:400 12px var(--sans);letter-spacing:.16em;color:var(--mute)}.ab-pr h3{font-size:2rem;margin:10px 0}.ab-pr p{margin:0;color:var(--mute)}
+.ab-wide{margin:0 0 clamp(40px,6vw,88px)}.ab-wide blockquote{font:400 clamp(1.6rem,3.6vw,3rem)/1.15 var(--serif);margin:28px 0 0;max-width:24ch}
+.ab-mat{list-style:none;margin:6px 0 0;padding:0}.ab-mat li{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-top:1px solid var(--line)}.ab-mat li:last-child{border-bottom:1px solid var(--line)}.ab-mat span:first-child{font-family:var(--serif);font-size:1.5rem;line-height:1.2}.ab-mat span:last-child{color:var(--mute);max-width:34ch;text-align:right}
+.ab-end{border-top:1px solid var(--line);padding:clamp(40px,6vw,88px) 0 100px}.ab-cats{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;margin-top:28px}
+@media(max-width:860px){.ab-split{grid-template-columns:1fr}.ab-split.rev .abi{order:0}.ab-pr{grid-template-columns:1fr}.ab-mat li{flex-direction:column;gap:4px}.ab-mat span:last-child{text-align:left}}
+.info-b{max-width:68ch;color:var(--mute)}.info-b h2{font-size:2rem;margin:36px 0 8px;color:var(--ink)}.info-b p{margin:0 0 16px}.info-b b{color:var(--ink);font-weight:500}
+.tb{width:100%;border-collapse:collapse;font-size:14px;color:var(--ink)}.tb th,.tb td{text-align:left;padding:11px 8px 11px 0;border-top:1px solid var(--line);font-weight:400}.tb thead th{font:500 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}.tb tbody th{font-weight:500}
+.ck{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,6vw,96px);padding:24px 0 100px;align-items:start}@media(max-width:860px){.ck{grid-template-columns:1fr}.cks{order:-1}}
+.ckf{display:grid;gap:18px}.ckf fieldset{border:0;border-top:1px solid var(--line);margin:0;padding:18px 0 0;display:grid;gap:14px}.ckf legend{font:500 11px var(--sans);letter-spacing:.16em;text-transform:uppercase;padding-right:10px}
+.f{display:grid;gap:6px}.f label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:520px){.f2{grid-template-columns:1fr}}
+.f input,.f textarea{width:100%;min-height:48px;padding:12px 14px;background:transparent;border:1px solid var(--line);color:var(--ink);font:inherit;border-radius:0}.f textarea{resize:vertical}.f input:focus,.f textarea:focus{border-color:var(--ink)}.f [aria-invalid=true]{border-color:var(--err)}.fe{color:var(--err);font-size:12px;min-height:16px}
+.opt{display:flex;gap:12px;border:1px solid var(--line);padding:14px;cursor:pointer;align-items:flex-start}.opt:has(input:checked){border-color:var(--ink)}.opt input{margin-top:5px;accent-color:var(--ink)}
+.demo{margin:0;padding:12px 14px;border:1px solid var(--line);font-size:13px;color:var(--mute)}.cks{position:sticky;top:96px}@media(max-width:860px){.cks{position:static}}
+
+/* ===== luxury refinement pass ===== */
+::selection{background:var(--ink);color:var(--bg)}
+html{scroll-behavior:smooth}
+body{letter-spacing:.005em;text-rendering:optimizeLegibility;font-feature-settings:"kern","liga"}
+:root{--g:clamp(20px,4vw,56px);--w:1440px}
+h1,h2,h3{letter-spacing:-.015em}
+.h-sec{font-size:clamp(2.1rem,4.6vw,4rem);line-height:1.04}
+h1 em,h2 em,.h-sec em,.h-hero em{font-style:italic;font-weight:400}
+.cap{font-size:10.5px;letter-spacing:.22em}
+.ann{background:#5B5A40;color:#ECE8DA;font-size:10.5px;letter-spacing:.22em;padding:8px 12px}
+nav.main{gap:34px;font-size:11px;letter-spacing:.2em}
+nav.main a{position:relative;border:0;padding:10px 0}
+nav.main a::after{content:"";position:absolute;left:0;right:100%;bottom:4px;height:1px;background:currentColor;transition:right .5s var(--ease)}
+nav.main a:hover::after,nav.main a:focus-visible::after{right:0}
+.tools{font-size:11px;letter-spacing:.2em}
+.btn{min-height:52px;padding:0 38px;font-size:11px;letter-spacing:.22em;transition:background .5s var(--ease),color .5s var(--ease)}
+.ul{font-size:11px;letter-spacing:.22em;padding-bottom:4px;transition:opacity .35s}.ul:hover{opacity:.55}
+@media(min-width:861px){.hd{height:78px}.logo{font-size:32px;letter-spacing:.46em;padding-left:.46em}
+.hero{grid-template-columns:5fr 6fr;min-height:calc(100svh - 108px)}
+.hero .t{padding:clamp(28px,4vw,64px) var(--g) clamp(36px,5vw,72px)}}
+.hero h1{font-size:clamp(3.2rem,8vw,8rem);letter-spacing:-.025em}
+.hero .t p{font-size:16px;line-height:1.75}
+.hero .v .cap{display:none}
+.hero .v img{animation:hz 2.6s var(--ease) both}@keyframes hz{from{transform:scale(1.06)}to{transform:none}}
+.ph-img{filter:saturate(.95) contrast(1.015)}
+.pg{animation:pg .8s var(--ease)}@keyframes pg{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.rv{transform:translateY(26px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease)}
+.grid .card:nth-child(4n+2){transition-delay:.08s}.grid .card:nth-child(4n+3){transition-delay:.16s}.grid .card:nth-child(4n){transition-delay:.24s}
+.card .m{padding-top:16px;align-items:baseline}.card .m a{font-family:var(--serif);font-size:1.3rem;line-height:1.2}
+.card .m>span{font-size:13px;color:var(--mute)}
+.card .sub{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;margin-top:4px}
+.card img{transition:opacity .8s var(--ease),transform 1.8s var(--ease)}.card:hover img{transform:scale(1.025)}
+.tag{font-size:9.5px;letter-spacing:.22em;padding:5px 9px}
+.cats span{display:flex;gap:14px;align-items:baseline;font-size:11px;letter-spacing:.2em;padding-top:14px}.cats i{font-style:normal;color:var(--mute);font-size:10px}
+.split .t{gap:28px}.split .t .h-sec{font-size:clamp(2.2rem,4.6vw,4.2rem)}
+.info h1{font-size:clamp(2.2rem,3.6vw,3.2rem)}.info{gap:26px}
+.drawer{width:min(480px,100%)}.dh h2{font-size:2rem}
+footer{padding-top:88px}.wm{font-family:var(--serif);font-size:clamp(3.5rem,19vw,17rem);line-height:.8;letter-spacing:.06em;color:#25271C;text-align:center;margin-top:64px;white-space:nowrap;overflow:hidden;user-select:none}
+@media(prefers-reduced-motion:reduce){.rv{transform:none}}
+</style></head>
+<body>
+<a class="sr-only" href="#app">Skip to content</a>
+<div class="ann">Complimentary shipping on orders above ₹15,000</div>
+<header><div class="wrap hd">
+<div><button class="burger" id="bg" aria-label="Open menu" aria-expanded="false">Menu</button>
+<nav class="main" aria-label="Primary"><a href="#/shop?new=1">New</a><a href="#/shop">Shop</a><a href="#/shop?c=Tailoring">Tailoring</a><a href="#/shop?c=Knitwear">Knitwear</a><a href="#/about">About</a></nav></div>
+<a class="logo" href="#/" aria-label="ARVENE home">ARVENE</a>
+<div class="tools"><button id="sb" aria-label="Search">Search</button><button id="bb" aria-label="Open bag">Bag (<span id="cnt">0</span>)</button></div>
+</div></header>
+<div class="mnav" id="mn" aria-label="Menu"><div class="top"><span class="logo">ARVENE</span><button id="mx" class="cap" aria-label="Close menu" style="min-height:44px">Close</button></div>
+<a href="#/shop?new=1">New</a><a href="#/shop">Shop all</a><a href="#/shop?c=Outerwear">Outerwear</a><a href="#/shop?c=Tailoring">Tailoring</a><a href="#/shop?c=Knitwear">Knitwear</a><a href="#/shop?c=Accessories">Accessories</a><a href="#/about">About</a></div>
+<main id="app" tabindex="-1"></main>
+<footer><div class="wrap"><div class="fg"><div><a class="logo" href="#/">ARVENE</a><p class="fine">Architectural tailoring and quiet essentials, cut to be worn for years.</p></div>
+<div><h3>Shop</h3><ul><li><a href="#/shop?new=1">New arrivals</a></li><li><a href="#/shop?c=Outerwear">Outerwear</a></li><li><a href="#/shop?c=Tailoring">Tailoring</a></li><li><a href="#/shop?c=Knitwear">Knitwear</a></li><li><a href="#/shop?c=Essentials">Essentials</a></li><li><a href="#/shop?c=Accessories">Accessories</a></li></ul></div>
+<div><h3>Service</h3><ul><li><a href="#/about">About ARVENE</a></li><li><a href="#/info/shipping">Shipping &amp; delivery</a></li><li><a href="#/info/returns">Returns &amp; exchanges</a></li><li><a href="#/info/size-guide">Size guide</a></li><li><a href="#/info/contact">Contact</a></li></ul></div>
+<div><h3>Region</h3><ul><li>India · ₹ INR</li><li>Collection 04, AW 2026</li></ul></div></div>
+<div class="fb"><span>© 2026 ARVENE. Independent fictional brand concept — not a real store.</span><span><a href="#/info/privacy">Privacy</a> · <a href="#/info/terms">Terms</a> · Concept project: no real orders, payments or emails.</span></div><div class="wm" aria-hidden="true">ARVENE</div></div></footer>
+<div class="scrim" id="sc"></div>
+<aside class="drawer" id="dr" role="dialog" aria-modal="true" aria-label="Shopping bag"><div class="dh"><h2 style="font-size:28px">Your bag</h2><button id="dx" class="cap" style="min-height:44px">Close</button></div><div class="db" id="dbody"></div><div class="df" id="dfoot"></div></aside>
+<div class="srch" id="se" role="dialog" aria-modal="true" aria-label="Search"><div class="wrap"><div class="row"><span class="cap">Search the collection</span><button id="sx" class="cap" style="min-height:44px">Close</button></div>
+<label class="sr-only" for="si">Search products</label><input id="si" placeholder="Coat, merino, linen…" autocomplete="off"><div id="sres" aria-live="polite"></div></div></div>
+<div class="toast" id="ts" role="status"></div>
+<script>
+const $=s=>document.querySelector(s),fmt=n=>'₹'+n.toLocaleString('en-IN');
+const C={Ink:'#1d1c1a',Camel:'#b08d63',Stone:'#cfc6b6',Ecru:'#e7e0d2',Slate:'#4a4f55',Olive:'#5b5a40',Oat:'#d9cdb4',Tan:'#9a6b45'};
+const A=['S','M','L','XL'];
+const P=[
+{id:1,s:'orvane-overcoat',n:'Orvane Overcoat',c:'Outerwear',p:34500,sh:'coat',col:['Ink','Camel'],sz:A,oos:['S'],m:'100% double-faced virgin wool',d:'A long, straight coat with a clean shoulder and a hidden placket. Cut to sit away from the body.',nw:1,f:1},
+{id:2,s:'tallow-blazer',n:'Tallow Blazer',c:'Tailoring',p:26500,sh:'coat',col:['Slate','Ink'],sz:A,oos:[],m:'98% wool, 2% elastane twill',d:'Soft-shouldered and unlined. A blazer that reads as a shirt in the way it moves.',nw:1,f:1},
+{id:3,s:'verge-trouser',n:'Verge Pleated Trouser',c:'Tailoring',p:12500,sh:'tr',col:['Slate','Stone'],sz:['28','30','32','34'],oos:['34'],m:'100% tropical wool',d:'A single deep pleat and a high, quiet rise. Falls straight to the shoe.',nw:1,f:1},
+{id:4,s:'loom-knit',n:'Loom Fine Knit',c:'Knitwear',p:9800,sh:'top',col:['Oat','Olive','Ink'],sz:A,oos:[],m:'100% extra-fine merino, 14-gauge',d:'A close-knit crewneck with a flat finish and a ribbed hem that holds its line.',nw:1,f:1},
+{id:5,s:'quiet-tee',n:'Quiet Tee',c:'Essentials',p:3200,sh:'tee',col:['Ecru','Ink'],sz:A,oos:[],m:'100% 240gsm combed cotton',d:'Heavy enough to hang, soft enough to forget. Boxy through the body.',f:0},
+{id:6,s:'field-overshirt',n:'Field Overshirt',c:'Outerwear',p:14800,sh:'top',col:['Olive','Tan'],sz:A,oos:['XL'],m:'100% brushed cotton canvas',d:'Worn as a shirt or a light jacket. Two patch pockets, corozo buttons.',f:1},
+{id:7,s:'ledger-shirt',n:'Ledger Linen Shirt',c:'Essentials',p:7400,sh:'top',col:['Ecru','Stone'],sz:A,oos:[],m:'100% European flax linen',d:'Relaxed collar, dropped shoulder. Softens with every wash.',f:0},
+{id:8,s:'rollneck',n:'Ashlar Roll Neck',c:'Knitwear',p:11200,sh:'top',col:['Ink','Camel'],sz:A,oos:['S','M'],m:'70% merino, 30% cashmere',d:'A deep, folded neck and a dense hand. Made for the coldest rooms.',nw:1,f:0},
+{id:9,s:'plain-belt',n:'Plain Belt',c:'Accessories',p:4800,sh:'belt',col:['Ink','Tan'],sz:['80','90','100'],oos:[],m:'Vegetable-tanned leather, brushed steel',d:'Thirty millimetres wide with a single prong. Nothing printed anywhere.',f:0},
+{id:10,s:'daybook-tote',n:'Daybook Tote',c:'Accessories',p:18900,sh:'bag',col:['Ink','Tan'],sz:['One size'],oos:[],m:'Full-grain calf leather, cotton lining',d:'Holds a laptop, a book, and little else. Unstructured, with a flat base.',f:1},
+{id:11,s:'straight-trouser',n:'Straight Everyday Trouser',c:'Essentials',p:8900,sh:'tr',col:['Ink','Stone'],sz:['28','30','32','34'],oos:[],m:'100% cotton gabardine',d:'The daily trouser: flat front, straight leg, a clean break at the ankle.',f:0},
+{id:12,s:'heavy-sweat',n:'Heavyweight Sweatshirt',c:'Essentials',p:6500,sh:'top',col:['Stone','Slate'],sz:A,oos:[],m:'100% 450gsm loopback cotton',d:'A dense, structured crew with a deliberately short body.',f:0}];
+const VW=['front','detail','back'];
+const HAVE=['orvane-overcoat-ink-front','tallow-blazer-slate-front','verge-trouser-slate-front','loom-knit-oat-front','quiet-tee-ecru-front','field-overshirt-olive-front','ledger-shirt-ecru-front','rollneck-ink-front','plain-belt-ink-front','straight-trouser-ink-front','heavy-sweat-stone-front']; // photographed views; add a name here when you add a file
+P.forEach(p=>{const k=p.col.filter(c=>HAVE.some(h=>h.startsWith(p.s+'-'+c.toLowerCase()+'-')));if(k.length){p.hold=p.col.filter(c=>!k.includes(c));p.col=k}}); // colours without photos are held back, not shown
+const real=p=>HAVE.some(h=>h.startsWith(p.s+'-')),has=(p,ci,v)=>HAVE.includes(p.s+'-'+p.col[ci].toLowerCase()+'-'+VW[v]),vw=(p,ci)=>real(p)?[0,1,2].filter(v=>has(p,ci,v)):[0,1,2];
+const SH={coat:'M33 10 50 18 67 10 86 24 92 110H67L65 52H35L33 110H8L14 24Z',top:'M34 12 50 19 66 12 92 30 83 54 71 47V102H29V47L17 54 8 30Z',tee:'M34 12 50 19 66 12 88 28 80 46 70 42V102H30V42L20 46 12 28Z',tr:'M30 10H70L75 114H54L50 54 46 114H25Z',bag:'M22 48H78L85 108H15Z',belt:''};
+function art(p,ci,v,big){const h=C[p.col[ci]],wall=['#e6e0d3','#cfc6b6','#dcd5c6'][v],fl=['#d6cdbb','#b9ae9a','#cbc1ad'][v],z=v==1?2.4:big?1.3:1,tx=(v==1||big)?-(50*z-50):0,ty=v==1?-(42*z-42):big?-(34*z-34):0,S=SH[p.sh],ln='fill="none" stroke="#000" stroke-opacity=".22" stroke-width=".6"',by={coat:111,top:104,tee:104,tr:115,bag:109,belt:94}[p.sh];let g,d='';
+if(p.sh=='belt')g=`<circle cx="50" cy="62" r="30" fill="none" stroke="${h}" stroke-width="7"/><path d="M50 32a30 30 0 0 1 21 9" fill="none" stroke="#000" stroke-opacity=".12" stroke-width="7"/><rect x="46" y="26" width="9" height="13" fill="#9a958a"/><rect x="48.5" y="29" width="4" height="7" fill="${wall}"/>`;
+else{g=`<path d="${S}" fill="${h}"/><clipPath id="c"><path d="${S}"/></clipPath><rect x="50" y="0" width="60" height="125" fill="#000" fill-opacity=".1" clip-path="url(#c)"/><path d="${S}" fill="url(#w)"/>`;
+if(p.sh=='bag')d=`<path d="M34 48C34 20 66 20 66 48" fill="none" stroke="${h}" stroke-width="3.5"/><path d="M22 60H78" ${ln}/>`;
+if(p.sh=='coat')d=`<path d="M50 18 43 50 50 112M50 18 57 50M36 52 34 108M64 52 66 108" ${ln}/>`+[62,78,94].map(y=>`<circle cx="52" cy="${y}" r="1.1" fill="#000" fill-opacity=".35"/>`).join('');
+if(p.sh=='top'||p.sh=='tee')d=`<path d="M42 13Q50 24 58 13M29 47V102M71 47V102M30 98H70" ${ln}/>`;
+if(p.sh=='tr')d=`<path d="M30 18H70M50 18V54M41 26 42 70M59 26 58 70" ${ln}/>`}
+if(v==2)d+=`<path d="M50 19V100" ${ln}/>`;
+const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125"><defs><pattern id="w" width="2" height="2" patternUnits="userSpaceOnUse"><path d="M0 0L2 2" stroke="#000" stroke-opacity=".1" stroke-width=".35"/></pattern></defs><rect width="100" height="125" fill="${wall}"/><rect y="116" width="100" height="9" fill="${fl}"/><g transform="translate(${tx} ${ty}) scale(${z})"><ellipse cx="50" cy="${by+2}" rx="32" ry="2.6" fill="#000" fill-opacity=".11"/>${g}${d}</g></svg>`;
+return 'data:image/svg+xml,'+encodeURIComponent(svg)}
+// ---- IMAGE MANIFEST: drop files at these paths; missing files fall back to the tonal placeholder ----
+const SL={hero:{src:'images/campaign/campaign-autumn-hero.webp',fp:'50% 20%',fpm:'50% 20%',alt:'A man in a long camel wool overcoat over a dark knit, standing in a pale travertine hall with a diagonal shadow on the wall',pid:1,ci:1,big:1},
+split:{src:'images/editorial/editorial-tailoring-shadow.webp',fp:'50% 30%',alt:'A man in a charcoal wool blazer and trousers in a pale stone interior with soft shapes of light on the walls',pid:2,v:1},
+'cat:Outerwear':{src:'images/collections/collection-outerwear.webp',fp:'50% 15%',alt:'A model in a long camel overcoat beside a travertine bench',pid:1},'cat:Tailoring':{src:'images/collections/collection-tailoring.webp',fp:'50% 20%',alt:'A model in a charcoal wool blazer against a travertine wall',pid:2},
+'cat:Knitwear':{src:'images/collections/collection-knitwear.webp',fp:'50% 20%',alt:'A woman in an oat fine-knit sweater in a sunlit stone interior',pid:4},'cat:Essentials':{src:'images/collections/collection-essentials.webp',fp:'50% 20%',alt:'A woman in an ecru cotton T-shirt and dark trousers',pid:5},'cat:Accessories':{src:'images/collections/collection-accessories.webp',fp:'40% 60%',alt:'A black leather tote and a tan belt on a travertine plinth',pid:10}};
+const im=(src,fp,fpm,alt,o)=>`<img class="ph-img" src="${src}" alt="${alt}" style="--fp:${fp||'50% 30%'};--fpm:${fpm||fp||'50% 30%'}" width="400" height="500" data-p="${o.p}" data-c="${o.c||0}" data-v="${o.v||0}" data-b="${o.b?1:0}"${o.hv?' data-hv="1"':''}${o.lazy?' loading="lazy"':' fetchpriority="high"'}${o.ol?` onload="${o.ol}"`:''} onerror="fbk(this)">`;
+function fbk(e){e.onerror=null;if(e.dataset.hv){e.remove();return}const p=P.find(x=>x.id==e.dataset.p);e.dataset.ph=1;e.src=art(p,+e.dataset.c,+e.dataset.v,+e.dataset.b)}
+const slot=(k,lazy=1)=>{const x=SL[k];return im(x.src,x.fp,x.fpm,x.alt,{p:x.pid,c:x.ci||0,v:x.v||0,b:x.big,lazy,ol:k=='hero'?"if(!this.dataset.ph&&this.naturalWidth/this.naturalHeight>1.2)this.closest('.hero').classList.add('fb')":''})};
+const photo=(p,ci,v)=>{const k=`images/products/product-${p.s}-${p.col[ci].toLowerCase()}-${VW[v]}.webp`;return (window.EMB&&window.EMB[k])||k};
+const img=(p,ci,v,alt,lazy=1,big=0,hv=0)=>im(photo(p,ci,v),'50% 20%','',alt!=null?alt:p.n+', '+p.col[ci],{p:p.id,c:ci,v,b:big,lazy,hv});
+// bag
+let bag=[];try{const r=JSON.parse(localStorage.getItem('arvene-bag'));if(Array.isArray(r))bag=r.filter(i=>{const p=i&&P.find(p=>p.id===i.id);return p&&p.sz.includes(i.sz)&&Number.isInteger(i.ci)&&i.ci>=0&&i.ci<p.col.length&&Number.isInteger(i.q)&&i.q>0&&i.q<=10})}catch(e){}
+const save=()=>{try{localStorage.setItem('arvene-bag',JSON.stringify(bag))}catch(e){}$('#cnt').textContent=bag.reduce((a,i)=>a+i.q,0)};
+const sub=()=>bag.reduce((a,i)=>a+P.find(p=>p.id===i.id).p*i.q,0);
+function toast(t,act){const e=$('#ts');e.innerHTML=`<span>${t}</span>${act?'<button id="ta">View bag</button>':''}`;e.classList.add('show');if(act)$('#ta').onclick=()=>openD(1);clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('show'),4200)}
+let lastF=null;
+function syncInert(){const on=['#dr','#se','#mn'].some(q=>$(q).classList.contains('open'));['.ann','header','#app','footer'].forEach(q=>{const e=$(q);on?e.setAttribute('inert',''):e.removeAttribute('inert')})}
+function openD(o){const d=$('#dr'),s=$('#sc');if(o){lastF=document.activeElement;drawBag();d.classList.add('open');s.classList.add('open');syncInert();$('#dx').focus()}else{const was=d.classList.contains('open');d.classList.remove('open');s.classList.remove('open');syncInert();if(was&&lastF&&lastF.focus)lastF.focus()}}
+function drawBag(){const b=$('#dbody'),f=$('#dfoot');
+if(!bag.length){b.innerHTML='<div class="empty"><h3 style="font-size:30px;color:var(--ink)">Your bag is empty</h3><p>Begin with something that lasts.</p><a class="btn" href="#/shop" onclick="openD(0)">Explore the collection</a></div>';f.innerHTML='';return}
+b.innerHTML=bag.map((i,k)=>{const p=P.find(x=>x.id===i.id);return `<div class="line">${img(p,i.ci,0)}<div><div class="row"><a href="#/p/${p.s}" onclick="openD(0)">${p.n}</a><span>${fmt(p.p*i.q)}</span></div><div class="sub cap" style="margin:4px 0 10px">${p.col[i.ci]} · ${i.sz} · ${fmt(p.p)}</div><div class="row"><div class="qty"><button data-q="${k}" data-d="-1" aria-label="Decrease quantity of ${p.n}">−</button><span aria-live="polite">${i.q}</span><button data-q="${k}" data-d="1" aria-label="Increase quantity of ${p.n}">+</button></div><button class="ul" data-rm="${k}" aria-label="Remove ${p.n}">Remove</button></div></div></div>`}).join('');
+const s=sub(),sh=s>15000?0:900;
+f.innerHTML=`<div class="row"><span>Subtotal</span><span>${fmt(s)}</span></div><div class="row sub cap" style="margin:8px 0"><span>Shipping</span><span>${sh?fmt(sh):'Complimentary'}</span></div><div class="row" style="font-size:18px;margin:10px 0 16px"><span>Total</span><strong style="font-weight:500">${fmt(s+sh)}</strong></div><a class="btn" style="width:100%" href="#/checkout" onclick="openD(0)">Checkout</a><button class="ul" style="margin-top:14px" onclick="openD(0)">Continue shopping</button><p class="sub" style="margin:12px 0 0;font-size:12px">Demo checkout: no payment is taken and nothing is shipped.</p>`}
+$('#dbody').addEventListener('click',e=>{const t=e.target.closest('button');if(!t)return;if(t.dataset.rm!=null)bag.splice(+t.dataset.rm,1);else if(t.dataset.q!=null){const i=bag[+t.dataset.q];i.q=Math.min(10,i.q+ +t.dataset.d);if(i.q<1)bag.splice(+t.dataset.q,1)}else return;save();drawBag()});
+function add(p,ci,sz,q){const k=bag.find(i=>i.id==p.id&&i.ci==ci&&i.sz==sz);if(k)k.q=Math.min(10,k.q+q);else bag.push({id:p.id,ci,sz,q});save();toast(p.n+' added to your bag.',1)}
+// cards
+const card=(p,ci=0)=>`<article class="card rv"><a href="#/p/${p.s}" aria-label="${p.n}, ${fmt(p.p)}"><div class="im">${p.nw?'<span class="tag">New</span>':''}${img(p,ci,0)}${(!real(p)||has(p,ci,2))?img(p,ci,2,'',1,0,1):''}</div></a><div class="m"><div><a href="#/p/${p.s}">${p.n}</a><div class="sub">${p.col.length>1?p.col.length+' colours':p.col[0]}</div></div><span>${fmt(p.p)}</span></div></article>`;
+// pages
+const F={c:'',sz:'',stock:0,max:0,sort:'f',nw:0};
+function home(){const fp=P.filter(p=>p.nw).slice(0,4),best=P.filter(p=>!fp.includes(p)).sort((x,y)=>(y.f||0)-(x.f||0)).slice(0,4);
+return `<section class="hero"><div class="t"><div class="row cap"><span>Collection 04</span><span>Autumn / Winter 2026</span></div><div style="display:grid;gap:22px"><h1 class="h-hero">Cut for<br>the <em>long</em><br>term.</h1><p>Architectural tailoring and quiet essentials, made in small runs from fabrics chosen to outlast a season.</p><div style="display:flex;gap:22px;align-items:center;flex-wrap:wrap"><a class="btn" href="#/shop?new=1">Shop the collection</a><a class="ul" href="#/shop?c=Outerwear">Outerwear</a></div></div></div><div class="v">${slot('hero',0)}<span class="cap">Orvane Overcoat — ${fmt(P[0].p)}</span></div></section>
+<section class="s"><div class="wrap"><div class="shd rv"><div><span class="cap">New season</span><h2 class="h-sec" style="margin-top:12px">Four pieces,<br><em>considered.</em></h2><p>The first edit from Collection 04 — heavier cloths, longer lines, a palette taken from wet stone and wool.</p></div><a class="ul" href="#/shop?new=1">View all</a></div><div class="grid">${fp.map(p=>card(p)).join('')}</div></div></section>
+<section class="split"><div class="v">${slot('split')}</div><div class="t"><span class="cap">The tailoring edit</span><h2 class="h-sec">Soft structure,<br><em>no padding.</em></h2><p>We remove the canvas and the heavy shoulder, and leave the cut to do the work. A jacket should move with you, then disappear.</p><a class="btn" href="#/shop?c=Tailoring">Explore tailoring</a></div></section>
+<section class="s"><div class="wrap"><div class="shd rv"><h2 class="h-sec">Shop by category</h2></div><div class="cats rv">${['Outerwear','Tailoring','Knitwear','Essentials','Accessories'].map((n,k)=>`<a href="#/shop?c=${n}"><div class="im">${slot('cat:'+n)}</div><span><i>0${k+1}</i>${n}</span></a>`).join('')}</div></div></section>
+<section class="s" style="border-top:1px solid var(--line)"><div class="wrap"><p class="phil h-sec rv">Fewer things, made <em>properly</em>, worn for years.</p><p class="rv" style="max-width:52ch;margin:32px auto 0;text-align:center;color:var(--mute)">Every ARVENE garment begins with the cloth. We choose it for weight, hand and how it ages, then cut the fewest seams needed. Nothing is branded on the outside.</p></div></section>
+<section class="s" style="padding-top:0"><div class="wrap"><div class="shd rv"><h2 class="h-sec">Most worn</h2><a class="ul" href="#/shop">Shop all</a></div><div class="grid">${best.map(p=>card(p)).join('')}</div></div></section>
+<section class="s nl"><div class="wrap"><h2 class="h-sec">Letters from the <em>atelier.</em></h2><p style="color:var(--mute);max-width:44ch">New collections, restocks and occasional notes on cloth. Rarely more than twice a month.</p><form id="nf" novalidate><label class="sr-only" for="em">Email address</label><input id="em" type="email" placeholder="Email address" autocomplete="email"><button class="btn" type="submit">Subscribe</button></form><div class="msg" id="nm" aria-live="polite"></div><p class="sub" style="font-size:12px;margin:0">Demonstration form — no email is sent or stored. We would never share your address.</p></div></section>`}
+function shop(q){const u=new URLSearchParams(q);if(!u.has('keep'))Object.assign(F,{c:u.get('c')||'',nw:u.get('new')?1:0,sz:'',stock:0,max:0});
+const cats=['Outerwear','Tailoring','Knitwear','Essentials','Accessories'];
+let L=P.filter(p=>(!F.c||p.c==F.c)&&(!F.nw||p.nw)&&(!F.sz||(p.sz.includes(F.sz)&&!p.oos.includes(F.sz)))&&(!F.stock||p.sz.some(s=>!p.oos.includes(s)))&&(!F.max||p.p<=F.max));
+L.sort(F.sort=='lo'?(a,b)=>a.p-b.p:F.sort=='hi'?(a,b)=>b.p-a.p:F.sort=='n'?(a,b)=>(b.nw||0)-(a.nw||0)||b.id-a.id:(a,b)=>(b.f||0)-(a.f||0)||a.id-b.id);
+const ch=(k,v,l)=>`<button class="chip" data-f="${k}" data-v="${v}" aria-pressed="${F[k]==v}">${l||v}</button>`;
+return `<div class="wrap"><div class="crumb"><a href="#/">Home</a> / Shop${F.c?' / '+F.c:''}</div><div style="padding:28px 0 8px"><h1 class="h-sec">${F.nw?'New arrivals':F.c||'The Collection'}</h1><p style="color:var(--mute);max-width:46ch">${F.c=='Tailoring'?'Unlined, soft-shouldered, made to be worn every day.':'A small, deliberate wardrobe. Every piece is cut to work with the others.'}</p></div>
+<div class="shop"><details class="fw"${(innerWidth>860||F.fo)?' open':''}><summary class="chip" id="fs">Filters</summary><div class="fl"><div><h3>Category</h3><div class="chips">${ch('c','','All')}${cats.map(c=>ch('c',c)).join('')}</div></div><div><h3>Size</h3><div class="chips">${ch('sz','','Any')}${['S','M','L','XL','30','32'].map(s=>ch('sz',s)).join('')}</div></div><div><h3>Price</h3><div class="chips">${ch('max',0,'Any')}${ch('max',10000,'Under ₹10,000')}${ch('max',20000,'Under ₹20,000')}</div></div><div><h3>Availability</h3><div class="chips">${ch('stock',1,'In stock only')}</div></div><button class="ul" data-reset style="justify-self:start">Clear all</button></div></details>
+<div><div class="bar"><span class="cap" aria-live="polite">${L.length} ${L.length==1?'piece':'pieces'}</span><label><span class="sr-only">Sort</span><select id="so">${[['f','Featured'],['n','Newest'],['lo','Price: low to high'],['hi','Price: high to low']].map(([v,l])=>`<option value="${v}"${F.sort==v?' selected':''}>${l}</option>`).join('')}</select></label></div>
+${L.length?`<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">${L.map(p=>card(p)).join('')}</div>`:'<div class="empty"><h2 style="font-size:32px;color:var(--ink)">Nothing matches.</h2><p>Try removing a filter.</p><button class="btn ghost" data-reset>Clear filters</button></div>'}</div></div></div>`}
+function pdp(slug){const p=P.find(x=>x.s==slug);if(!p)return '<div class="wrap empty"><h1 class="h-sec">Page not found</h1><a class="btn" href="#/shop">Back to shop</a></div>';
+document.title=p.n+' — ARVENE';let ci=0,v=0,sz='',q=1;
+const rel=P.filter(x=>x.c==p.c&&x.id!=p.id).concat(P.filter(x=>x.c!=p.c)).slice(0,4);
+setTimeout(()=>{const m=$('#app');const draw=()=>{m.querySelector('.mn').innerHTML=img(p,ci,v,p.n+', '+p.col[ci]+' — view '+(v+1),0);m.querySelectorAll('.th button').forEach(b=>{const i=+b.dataset.v;b.setAttribute('aria-current',i==v);b.innerHTML=img(p,ci,i,'')});m.querySelectorAll('.sw').forEach((b,i)=>b.setAttribute('aria-checked',i==ci));$('#cn2').textContent=p.col[ci];m.querySelectorAll('[data-sz]').forEach(b=>b.setAttribute('aria-checked',b.dataset.sz==sz));$('#qn').textContent=q};
+draw();m.querySelector('.th').onclick=e=>{const b=e.target.closest('button');if(b){v=+b.dataset.v;draw()}};
+let x0=0;const mn=m.querySelector('.mn');mn.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});mn.addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>45){const L=vw(p,ci),k=L.indexOf(v);v=L[(k+(d<0?1:L.length-1))%L.length];draw()}});
+m.querySelector('.sws').onclick=e=>{const b=e.target.closest('.sw');if(b){ci=+b.dataset.c;draw()}};
+m.querySelector('.szs').onclick=e=>{const b=e.target.closest('[data-sz]');if(b&&!b.disabled){sz=b.dataset.sz;$('#er').textContent='';draw()}};
+$('#qm').onclick=()=>{q=Math.max(1,q-1);draw()};$('#qp').onclick=()=>{q=Math.min(10,q+1);draw()};
+$('#ad').onclick=()=>{if(!sz){$('#er').textContent='Please select a size to continue.';return}add(p,ci,sz,q)}},0);
+return `<div class="wrap"><div class="crumb"><a href="#/">Home</a> / <a href="#/shop?c=${p.c}">${p.c}</a> / ${p.n}</div><div class="pdp"><div class="gal${vw(p,0).length<2?' one':''}"><div class="th">${vw(p,0).map((i,k)=>`<button data-v="${i}" aria-label="View image ${k+1}"></button>`).join('')}</div><div class="mn"></div></div>
+<div class="info"><div><span class="cap">${p.c}</span><h1 class="h-sec" style="margin:8px 0">${p.n}</h1><div style="font-size:18px">${fmt(p.p)} <span class="sub">incl. taxes</span></div></div><p style="margin:0;color:var(--mute)">${p.d}</p>
+<div><div class="cap" style="margin-bottom:10px">Colour — <span id="cn2"></span></div><div class="sws" role="radiogroup" aria-label="Colour" style="display:flex;gap:12px">${p.col.map((c,i)=>`<button class="sw" role="radio" data-c="${i}" aria-label="${c}" style="background:${C[c]}"></button>`).join('')}</div></div>
+<div><div class="cap" style="margin-bottom:10px">Size</div><div class="chips szs" role="radiogroup" aria-label="Size">${p.sz.map(s=>`<button class="chip" role="radio" data-sz="${s}" aria-checked="false"${p.oos.includes(s)?' disabled aria-label="'+s+', sold out"':''}>${s}</button>`).join('')}</div><div id="er" class="msg er" role="alert"></div></div>
+<div style="display:flex;gap:14px"><div class="qty"><button id="qm" aria-label="Decrease quantity">−</button><span id="qn" aria-live="polite">1</span><button id="qp" aria-label="Increase quantity">+</button></div><button id="ad" class="btn" style="flex:1">Add to bag</button></div>
+<div><details class="ac" open><summary>Material &amp; care</summary><p>${p.m}. Dry clean or cool hand wash; dry flat, away from direct heat.</p></details><details class="ac"><summary>Fit &amp; sizing</summary><p>Model is 183 cm and wears a size M. Cut true to size with a relaxed line; take one size down for a closer fit.</p></details><details class="ac"><summary>Size guide</summary>${szt(p)}</details><details class="ac"><summary>Shipping &amp; returns</summary><p>Complimentary shipping above ₹15,000. Returns accepted within 14 days, unworn with tags. (Concept policy.)</p></details></div></div></div>
+<section style="padding:0 0 100px"><h2 class="h-sec" style="margin-bottom:32px">You may also wear</h2><div class="grid">${rel.map(x=>card(x)).join('')}</div></section></div>`}
+const X=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const shipFee=(s,m)=>m=='exp'?1800:(s>15000?0:900);
+const TOP={S:[96,68],M:[102,70],L:[108,72],XL:[114,74]},WAIST={28:72,30:77,32:82,34:87},BELT={80:'76–84',90:'86–94',100:'96–104'};
+const tb=(h,r)=>`<table class="tb"><thead><tr>${h.map(x=>`<th scope="col">${x}</th>`).join('')}</tr></thead><tbody>${r.map(x=>`<tr>${x.map((c,i)=>i?`<td>${c}</td>`:`<th scope="row">${c}</th>`).join('')}</tr>`).join('')}</tbody></table>`;
+function szt(p){let t;if(p.sz.includes('S'))t=tb(['Size','Chest (cm)','Length (cm)'],p.sz.map(z=>[z,...TOP[z]]));else if(p.sz.includes('28'))t=tb(['Size','Waist (cm)','Inseam (cm)'],p.sz.map(z=>[z,WAIST[z],79]));else if(p.sz.includes('80'))t=tb(['Size','Fits waist (cm)'],p.sz.map(z=>[z,BELT[z]]));else t='<p>One size. Approximately 38 cm wide, 30 cm high and 14 cm deep.</p>';
+return `<div style="padding-bottom:12px">${t}<p class="sub" style="margin:10px 0 0;font-size:12px">Approximate garment measurements. <a class="ul" href="#/info/size-guide">Full size guide</a></p></div>`}
+const INFO={
+shipping:['Shipping & delivery','How orders would reach you, if this were a live store.',`<p>We deliver across India. Standard delivery takes 3 to 6 working days and is complimentary on orders above ₹15,000, otherwise ₹900. Express delivery takes 1 to 2 working days and costs ₹1,800.</p><p>You would receive tracking by email once an order leaves the atelier. Delivery to other countries is not available in this concept.</p>`],
+returns:['Returns & exchanges','Fourteen days, no questions about why.',`<p>You may return any unworn piece, with its tags attached, within 14 days of delivery. Exchanges for another size are free. Refunds are made to the original payment method within 7 working days of the return arriving.</p><p>Leather accessories must be unmarked. Items that have been altered cannot be returned.</p>`],
+'size-guide':['Size guide','Approximate garment measurements in centimetres.',`<h2>Tops, knitwear and outerwear</h2>${tb(['Size','Chest (cm)','Length (cm)'],Object.entries(TOP).map(([k,v])=>[k,...v]))}<h2>Trousers</h2>${tb(['Size','Waist (cm)','Inseam (cm)'],Object.entries(WAIST).map(([k,v])=>[k,v,79]))}<h2>Belts</h2>${tb(['Size','Fits waist (cm)'],Object.entries(BELT))}<p>Our cuts are relaxed. If you are between sizes, choose the smaller for a closer line. The model in our photographs is 183 cm and wears a size M.</p>`],
+privacy:['Privacy','A demonstration policy.',`<p>This is a concept website. The forms on it do not send, store or share your information. If ARVENE were a real store, this page would explain what data is collected, why, and how to request its deletion.</p><p>This text is a placeholder for portfolio purposes. It has not been reviewed by a lawyer and is not suitable for a real business.</p>`],
+terms:['Terms & conditions','A demonstration document.',`<p>ARVENE is a fictional brand created as an independent concept project. No products can be bought and no orders are fulfilled. Prices, policies and product descriptions are illustrative.</p><p>This text is a placeholder for portfolio purposes. It has not been reviewed by a lawyer and is not suitable for a real business.</p>`]};
+function info(k){const d=INFO[k];if(k=='contact')return contact();if(!d)return '<div class="wrap empty"><h1 class="h-sec">Page not found</h1><a class="btn" href="#/shop">Back to shop</a></div>';document.title=d[0]+' — ARVENE';return `<div class="wrap"><div class="ab-top"><span class="cap">Customer care</span><h1 class="ab-h h-sec">${d[0]}</h1><p class="ab-lead">${d[1]}</p></div><div class="info-b">${d[2]}</div><p class="sub" style="margin:40px 0 100px;font-size:12px">Concept project. Policies are illustrative.</p></div>`}
+const fe=(id,l,o={})=>`<div class="f"><label for="${id}">${l}</label>${o.ta?`<textarea id="${id}" name="${id}" rows="5" aria-describedby="e-${id}"></textarea>`:`<input id="${id}" name="${id}" type="${o.t||'text'}"${o.a?` autocomplete="${o.a}"`:''}${o.m?` inputmode="${o.m}"`:''} aria-describedby="e-${id}">`}<div class="fe" id="e-${id}" aria-live="polite"></div></div>`;
+function contact(){document.title='Contact — ARVENE';return `<div class="wrap"><div class="ab-top"><span class="cap">Customer care</span><h1 class="ab-h h-sec">Contact</h1><p class="ab-lead">Questions about a piece, sizing or an order. This is a demonstration form.</p></div><div class="ab-split" style="align-items:start"><form id="cf" novalidate class="ckf">${fe('name','Your name',{a:'name'})}${fe('email','Email',{t:'email',a:'email'})}${fe('msg','Message',{ta:1})}<div class="msg" id="cfm" role="status"></div><button class="btn" type="submit">Send message</button><p class="sub" style="font-size:12px;margin:0">Nothing is sent or stored.</p></form><div class="info-b"><p><b>Atelier</b><br>atelier@arvene.example<br>+91 00000 00000</p><p><b>Hours</b><br>Monday to Saturday, 10:00 to 18:00 IST</p><p class="sub">Fictional demonstration details.</p></div></div></div>`}
+function checkout(){document.title='Checkout — ARVENE';if(!bag.length)return '<div class="wrap empty" style="padding:100px 0"><h1 class="h-sec" style="color:var(--ink)">Your bag is empty</h1><p>Add something before checking out.</p><a class="btn" href="#/shop">Explore the collection</a></div>';
+return `<div class="wrap"><div class="crumb"><a href="#/">Home</a> / Checkout</div><div class="ck"><form id="ck" novalidate class="ckf"><h1 class="h-sec">Checkout</h1><p class="demo">Concept demonstration. No payment is collected, so please do not enter card or banking details.</p>
+<fieldset><legend>Contact</legend>${fe('name','Full name',{a:'name'})}<div class="f2">${fe('email','Email',{t:'email',a:'email'})}${fe('phone','Phone',{t:'tel',a:'tel',m:'tel'})}</div></fieldset>
+<fieldset><legend>Shipping address</legend>${fe('addr','Address',{a:'street-address'})}<div class="f2">${fe('city','City',{a:'address-level2'})}${fe('state','State',{a:'address-level1'})}</div>${fe('pin','PIN code',{a:'postal-code',m:'numeric'})}</fieldset>
+<fieldset><legend>Delivery</legend><label class="opt"><input type="radio" name="ship" value="std" checked><span><b>Standard</b>, 3 to 6 days<br><span class="sub">Complimentary above ₹15,000, otherwise ₹900</span></span></label><label class="opt"><input type="radio" name="ship" value="exp"><span><b>Express</b>, 1 to 2 days<br><span class="sub">₹1,800</span></span></label></fieldset>
+<div class="msg er" id="ckerr" role="alert"></div><button class="btn" type="submit" style="width:100%">Place demo order</button></form>
+<aside class="cks" aria-label="Order summary"><h2 style="font-size:28px;margin-bottom:8px">Order summary</h2>${bag.map(i=>{const p=P.find(x=>x.id==i.id);return `<div class="line">${img(p,i.ci,0)}<div><div class="row"><span>${p.n}</span><span>${fmt(p.p*i.q)}</span></div><div class="sub cap" style="margin-top:4px">${p.col[i.ci]} · ${i.sz} · Qty ${i.q}</div></div></div>`}).join('')}<div id="cksum"></div></aside></div></div>`}
+function ckSum(){const e=$('#cksum');if(!e)return;const r=$('input[name=ship]:checked'),s=sub(),f=shipFee(s,r&&r.value);e.innerHTML=`<div class="row" style="margin-top:14px"><span>Subtotal</span><span>${fmt(s)}</span></div><div class="row sub cap" style="margin:8px 0"><span>Shipping</span><span>${f?fmt(f):'Complimentary'}</span></div><div class="row" style="font-size:18px"><span>Total</span><strong style="font-weight:500">${fmt(s+f)}</strong></div>`}
+function errs(f,E,order){let first=null;order.forEach(id=>{const el=f.elements[id],m=document.getElementById('e-'+id);if(m)m.textContent=E[id]||'';if(el){el.setAttribute('aria-invalid',E[id]?'true':'false');if(E[id]&&!first)first=el}});if(first)first.focus();return !first}
+const MAIL=/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/;
+function doCk(f){const v=k=>f.elements[k].value.trim(),E={};let ph=v('phone').replace(/[\s-]/g,'');if(/^(\+?91)\d{10}$/.test(ph))ph=ph.slice(-10);
+if(v('name').length<2)E.name='Please enter your full name.';if(!MAIL.test(v('email')))E.email='Please enter a valid email address.';if(!/^\d{10}$/.test(ph))E.phone='Please enter a 10-digit phone number.';if(v('addr').length<6)E.addr='Please enter your street address.';if(v('city').length<2)E.city='Please enter your city.';if(v('state').length<2)E.state='Please enter your state.';if(!/^\d{6}$/.test(v('pin')))E.pin='Please enter a 6-digit PIN code.';
+const ok=errs(f,E,['name','email','phone','addr','city','state','pin']);$('#ckerr').textContent=ok?'':'Please correct the highlighted fields.';if(!ok)return;
+const m=f.elements.ship.value,s=sub(),fee=shipFee(s,m),L=bag.map(i=>{const p=P.find(x=>x.id==i.id);return `<tr><td>${p.n} — ${p.col[i.ci]}, ${i.sz}</td><td>${i.q}</td><td>${fmt(p.p*i.q)}</td></tr>`}).join(''),ref='ARV-DEMO-'+String(Math.floor(Math.random()*90000)+10000);
+bag=[];save();document.title='Demo order — ARVENE';$('#app').innerHTML=`<div class="wrap"><div class="ab-top"><span class="cap">Reference ${ref}</span><h1 class="ab-h h-sec">Demo order received.</h1><p class="ab-lead">Thank you, ${X(v('name'))}. This was a simulation: no payment was taken, no email was sent and nothing will be shipped.</p></div><div class="info-b"><table class="tb"><thead><tr><th scope="col">Item</th><th scope="col">Qty</th><th scope="col">Amount</th></tr></thead><tbody>${L}<tr><td>Shipping (${m=='exp'?'Express':'Standard'})</td><td></td><td>${fee?fmt(fee):'Complimentary'}</td></tr><tr><th scope="row">Total</th><td></td><td><b>${fmt(s+fee)}</b></td></tr></tbody></table><p class="sub">Would be delivered to ${X(v('addr'))}, ${X(v('city'))}, ${X(v('state'))} ${X(v('pin'))}.</p><p><a class="btn" href="#/shop">Continue shopping</a></p></div><div style="height:100px"></div></div>`;window.scrollTo(0,0);$('#app').focus({preventScroll:true})}
+function doCf(f){const v=k=>f.elements[k].value.trim(),E={};if(v('name').length<2)E.name='Please enter your name.';if(!MAIL.test(v('email')))E.email='Please enter a valid email address.';if(v('msg').length<10)E.msg='Please write a few words (at least 10 characters).';
+const m=$('#cfm');if(!errs(f,E,['name','email','msg'])){m.className='msg er';m.textContent='Please correct the highlighted fields.';return}m.className='msg ok';m.textContent='Thank you. This is a demonstration, so nothing has been sent.';f.reset()}
+document.addEventListener('submit',e=>{const i=e.target.id;if(i=='ck'){e.preventDefault();doCk(e.target)}else if(i=='cf'){e.preventDefault();doCf(e.target)}});
+document.addEventListener('change',e=>{if(e.target.name=='ship')ckSum()});
+function about(){document.title='About — ARVENE';const ph=(k,c)=>`<div class="abi ${c||''}">${slot(k)}</div>`;
+return `<div class="wrap"><div class="ab-top"><span class="cap">About</span><h1 class="ab-h h-sec">Clothes cut to be <em>worn for years.</em></h1><p class="ab-lead">ARVENE is an independent label of architectural tailoring and quiet essentials. This is how the house thinks about cloth, cut and time.</p></div>
+<section class="ab-split rv">${ph('cat:Outerwear')}<div class="ab-t"><span class="cap">Origin</span><h2 class="h-sec">One question, ten years.</h2><p>ARVENE began with a simple test: if a piece had to earn its place in a wardrobe for a decade, how would it be made? Two designers, one trained in tailoring and one in knitwear, started from that question and worked backwards.</p><p>The answer was fewer pieces, in better cloth, cut with only the seams they need. Everything in the collection is meant to work with everything else.</p></div></section>
+<section class="ab-pr rv"><div><b>01</b><h3>Cloth first</h3><p>We begin with weight, hand and how a fabric ages, then draw the garment around it.</p></div><div><b>02</b><h3>Fewer seams</h3><p>A coat is cut with the construction it needs and no more. Less detail, a cleaner line.</p></div><div><b>03</b><h3>Made to repeat</h3><p>A small palette of stone, ink, oat and olive means pieces combine season after season.</p></div></section>
+<section class="ab-wide rv">${ph('split','wide')}<blockquote>Quiet confidence is a matter of fit, weight and restraint.</blockquote></section>
+<section class="ab-split rev rv">${ph('cat:Knitwear')}<div class="ab-t"><span class="cap">Materials</span><h2 class="h-sec">What we make with.</h2><ul class="ab-mat"><li><span>Wool</span><span>Double-faced and tropical wools for coats, tailoring and trousers.</span></li><li><span>Merino &amp; cashmere</span><span>Extra-fine merino and a merino-cashmere blend for knitwear.</span></li><li><span>Cotton</span><span>Heavyweight jersey, brushed canvas and gabardine.</span></li><li><span>Linen</span><span>Flax linen, left to soften and crease with wear.</span></li><li><span>Leather</span><span>Full-grain and vegetable-tanned, with nothing printed on the outside.</span></li></ul></div></section>
+<section class="ab-end rv"><h2 class="h-sec">Begin with the <em>cloth.</em></h2><div class="ab-cats"><a class="btn" href="#/shop">Shop the collection</a>${['Outerwear','Tailoring','Knitwear','Essentials','Accessories'].map(c=>`<a class="ul" href="#/shop?c=${c}">${c}</a>`).join('')}</div><p class="sub" style="margin:40px 0 0;font-size:12px;max-width:60ch">ARVENE is a fictional brand created as an independent concept project. Its story, products and policies are invented, and no orders are taken.</p></section></div>`}
+function route(keep){const h=location.hash.slice(1)||'/',[path,q]=h.split('?'),a=$('#app');document.title='ARVENE — Cut for the long term';
+a.innerHTML=path.startsWith('/p/')?pdp(path.slice(3)):path=='/shop'?shop(q||''):path=='/about'?about():path=='/checkout'?checkout():path.startsWith('/info/')?info(path.slice(6)):home();
+if(!keep){window.scrollTo(0,0);a.focus({preventScroll:true});a.classList.remove('pg');void a.offsetWidth;a.classList.add('pg')}mnav(0);observe();if(path=='/checkout')ckSum();if(keep)document.querySelectorAll('.rv').forEach(e=>e.classList.add('in'))}
+function observe(){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -6% 0px'});document.querySelectorAll('.rv').forEach(e=>io.observe(e))}
+function mnav(o){$('#mn').classList.toggle('open',!!o);syncInert();$('#bg').setAttribute('aria-expanded',!!o);if(o)$('#mx').focus()}
+$('#bg').onclick=()=>mnav(1);$('#mx').onclick=()=>{mnav(0);$('#bg').focus()};$('#bb').onclick=()=>openD(1);$('#dx').onclick=()=>openD(0);$('#sc').onclick=()=>openD(0);
+document.addEventListener('keydown',e=>{if(e.key=='Escape'){openD(0);srch(0);mnav(0)}});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-f],[data-reset]');if(!b)return;if(b.dataset.reset!=null)Object.assign(F,{c:'',sz:'',stock:0,max:0,nw:0});else{const k=b.dataset.f,v=b.dataset.v;F[k]=(k=='stock'||k=='max')?(F[k]==+v?0:+v):v;if(k=='c')F.nw=0}
+history.replaceState(null,'','#/shop?keep=1');route(1);if(b.dataset.f){const n=document.querySelector(`[data-f="${b.dataset.f}"][data-v="${b.dataset.v}"]`);n&&n.focus({preventScroll:true})}});
+document.addEventListener('toggle',e=>{if(e.target.classList&&e.target.classList.contains('fw')&&innerWidth<=860)F.fo=e.target.open},true);
+document.addEventListener('change',e=>{if(e.target.id=='so'){F.sort=e.target.value;route()}});
+document.addEventListener('submit',e=>{if(e.target.id!='nf')return;e.preventDefault();const v=$('#em').value.trim(),m=$('#nm');if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v)){m.className='msg er';m.textContent='Please enter a valid email address.';$('#em').focus();return}m.className='msg ok';m.textContent='Thank you. This is a demonstration — nothing has been sent or saved.';$('#em').value=''});
+function srch(o){const s=$('#se');s.classList.toggle('open',!!o);syncInert();if(o){$('#si').value='';res('');$('#si').focus()}}
+function res(t){t=t.trim().toLowerCase();const L=t?P.filter(p=>(p.n+' '+p.c+' '+p.m+' '+p.col.join(' ')).toLowerCase().includes(t)):P.filter(p=>p.f);
+$('#sres').innerHTML=`<p class="cap" style="margin-top:20px">${t?L.length+' result'+(L.length==1?'':'s'):'Popular'}</p>`+(L.length?`<div class="sr">${L.map(p=>`<a href="#/p/${p.s}" onclick="srch(0)">${img(p,0,0,p.n)}<div style="margin-top:8px">${p.n}</div><div class="sub">${fmt(p.p)}</div></a>`).join('')}</div>`:`<div class="empty">No pieces match “${t.replace(/[<>&"]/g,'')}”. <button class="ul" onclick="$('#si').value='';res('')">Clear search</button></div>`)}
+$('#sb').onclick=()=>srch(1);$('#sx').onclick=()=>srch(0);$('#si').oninput=e=>res(e.target.value);
+window.addEventListener('hashchange',()=>route());save();route();
+</script></body></html>
